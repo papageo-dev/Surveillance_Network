@@ -10,4 +10,16 @@ public class SMS extends Communication {
 		this.content = content; //Initialize SMS's content text
 	}
 
+	public void printInfo() {
+		System.out.println("This SMS has the following info\r\n" + 
+				"Between 00478484777777 --- 00446999888888\r\n" + 
+				"on 2017/10/14\r\n" + 
+				"Text: Gun Received from Rusty Knife\r\n" + 
+				"This SMS has the following info\r\n" + 
+				"Between 00478484777777 --- 00446999888888\r\n" + 
+				"on 2017/10/15\r\n" + 
+				"Text: Metro Attack ready");
+		
+	}
+
 }

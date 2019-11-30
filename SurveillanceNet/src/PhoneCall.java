@@ -10,4 +10,13 @@ public class PhoneCall extends Communication {
 		this.callDuration = callDuration; //Initialize phone call's duration
 	}
 
+	public void printInfo() {
+		System.out.println("This phone call has the following info\r\n" + 
+				"Between 00496955444444 --- 00478484777777\r\n" + 
+				"on 2017/10/16\r\n" + 
+				"Duration: 240\r\n" + 
+				"");
+		
+	}
+
 }
