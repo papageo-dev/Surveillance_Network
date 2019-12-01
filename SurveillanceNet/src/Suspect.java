@@ -32,7 +32,7 @@ public class Suspect {
 	//Add a suspect's potential partner to the ArrayList: "potentialPartners"
 	public void addPotentialPartners(Suspect aSuspect) {
 		for (int i=0; i<potentialPartners.size(); i++) { //Check if ArrayList contains the current potential partner
-			if (potentialPartners.get(i).equals(aSuspect.name)) { //If contains, break
+			if (potentialPartners.get(i).equals(aSuspect)) { //If contains, break
 				break;
 			}
 			else { //If not contains, add to ArrayList: "potentialPartners"
@@ -88,6 +88,22 @@ public class Suspect {
 	//Returns current suspect's code name
 	public String getCodeName() {
 		return codeName;
+	}
+	
+	//Returns number of suspect's potential partners
+	public int getPotentialPartnersSize(){
+		return potentialPartners.size();
+	}
+	
+	//Returns suspect's origin Country
+	public String getOriginCountry() {
+		return originCountry;
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		Suspect s = (Suspect)o;
+		return (s.name==name);
 	}
 	
 

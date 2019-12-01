@@ -10,16 +10,19 @@ public class SMS extends Communication {
 		this.content = content; //Initialize SMS's content text
 	}
 
+	//Print SMS information
 	public void printInfo() {
-		System.out.println("This SMS has the following info\r\n" + 
-				"Between 00478484777777 --- 00446999888888\r\n" + 
-				"on 2017/10/14\r\n" + 
-				"Text: Gun Received from Rusty Knife\r\n" + 
-				"This SMS has the following info\r\n" + 
-				"Between 00478484777777 --- 00446999888888\r\n" + 
-				"on 2017/10/15\r\n" + 
-				"Text: Metro Attack ready");
-		
+		System.out.println("This SMS has the following info \n" + 
+				"Between " + phoneNumber1 + " --- " + phoneNumber2 + "\n" + 
+				"on " + year + "/" + month + "/" + day + "\n" + 
+				"Text: " + content + "\n");	
+	}
+
+	//I should delete it
+	@Override
+	public int getPhoneCallDuration() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

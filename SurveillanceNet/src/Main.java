@@ -75,7 +75,7 @@ public class Main {
 			System.out.println(suspect.getName() + ", " + suspect.getCodeName());
 		
 		//Test 6. print suspects originating from a country
-		System.out.print("\nTest6 – ");
+		System.out.print("\nTest6 – Suspects coming from Spain: \n");
 		registry.printSuspectsFromCountry("Spain");
 	}
 
