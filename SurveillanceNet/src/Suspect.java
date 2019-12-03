@@ -49,6 +49,8 @@ public class Suspect {
 		
 		boolean connected=false;
 	
+		//...
+			
 		return connected;
 	}
 	
@@ -58,6 +60,7 @@ public class Suspect {
 		//Create an ArrayList, that will contains all common partners, between aSuspect and current suspect
 		ArrayList<Suspect> commonPartners = new ArrayList<Suspect>();
 		
+		//...
 		
 		//Return list of common partners
 		return commonPartners; 
