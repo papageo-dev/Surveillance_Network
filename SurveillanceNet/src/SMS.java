@@ -2,12 +2,12 @@
 public class SMS extends Communication {
 	
 	//SMS's fields
-	private String content; //SMS's content text
+	private String contentText; //SMS's content text
 
 	//SMS's constructor, with fields
-	public SMS(String phoneNumber1, String phoneNumber2, int day, int month, int year, String content) {
+	public SMS(String phoneNumber1, String phoneNumber2, int day, int month, int year, String contentText) {
 		super(phoneNumber1, phoneNumber2, day, month, year); //Initialize communication's fields
-		this.content = content; //Initialize SMS's content text
+		this.contentText = contentText; //Initialize SMS's content text
 	}
 
 	//Print SMS information
@@ -15,14 +15,12 @@ public class SMS extends Communication {
 		System.out.println("This SMS has the following info \n" + 
 				"Between " + phoneNumber1 + " --- " + phoneNumber2 + "\n" + 
 				"on " + year + "/" + month + "/" + day + "\n" + 
-				"Text: " + content + "\n");	
+				"Text: " + contentText + "\n");	
 	}
-
-	//I should delete it
-	@Override
-	public int getPhoneCallDuration() {
-		// TODO Auto-generated method stub
-		return 0;
+	
+	//Return SMS's content Text
+	public String getContentText() {
+		return contentText;
 	}
 
 }

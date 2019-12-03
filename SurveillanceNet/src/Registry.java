@@ -14,9 +14,16 @@ public class Registry {
 	
 	//Add a communication to the ArrayList: allComm and...
 	public void addCommunication(Communication aCommunication) {
-		allComm.add(aCommunication);
-		//I should write... if comm is between num1, num2, update list with common partners
 		
+		allComm.add(aCommunication); //Add a new communication
+	    		
+		//Check if communication is being between number1 and number2
+		for (int i=0; i<allSuspects.size(); i++) {
+			if (allSuspects.get(i).getPhoneNumbers().contains(aCommunication.phoneNumber1) &&
+				allSuspects.get(i).getPhoneNumbers().contains(aCommunication.phoneNumber2)) {
+				allSuspects.get(i).addPotentialPartners(allSuspects.get(i)); //Update list with potential partners
+			}
+		}
 	}
 	
 	//Returns suspect with the most potential partners
@@ -46,7 +53,7 @@ public class Registry {
 				//Check if there are phone calls between number1 and number2...
 				if (allComm.get(i).phoneNumber1==number1 && allComm.get(i).phoneNumber2==number2) {
 					//Search for their longest phone call
-					if (allComm.get(i).getPhoneCallDuration()>longestPhoneCall.getPhoneCallDuration()) {
+					if (((PhoneCall) allComm.get(i)).getPhoneCallDuration()>((PhoneCall) longestPhoneCall).getPhoneCallDuration()) {
 						longestPhoneCall=allComm.get(i); //Make this phone call, the longest phone call between these numbers
 					}
 				}
@@ -57,9 +64,29 @@ public class Registry {
 	
 	//Returns all messages that contains “Bomb”, “Attack”, “Explosives”, “Gun”, between number1 and number2
 	public ArrayList<SMS> getMessagesBetween(String number1, String number2) {
-
 		
+		//Create an Array/list, that will contains all suspicious messages, between number1 and number2
+		ArrayList<SMS> suspiciousMessages = new ArrayList<SMS>();
+				
+		//Search ArrayList with all communications
+		for (int i=0; i<allComm.size(); i++) {
+			//Check if current communication is an instance of SMS
+			if (allComm.get(i) instanceof SMS) {
+				//Check if there are SMS between number1 and number2...
+				if (allComm.get(i).phoneNumber1==number1 && allComm.get(i).phoneNumber2==number2) {
+					//Search for suspicious messages, between them
+					if (((SMS) allComm.get(i)).getContentText().contains("Bomb") ||
+					    ((SMS) allComm.get(i)).getContentText().contains("Attack") ||
+						((SMS) allComm.get(i)).getContentText().contains("Explosives") ||
+						((SMS) allComm.get(i)).getContentText().contains("Gun")) {
+						   suspiciousMessages.add((SMS)allComm.get(i));
+					}
+				}
+			}
+		}
+		return suspiciousMessages;
 	}
+	
 	
 	//Returns all suspects that they came from specific Country
 	public void printSuspectsFromCountry(String country) {

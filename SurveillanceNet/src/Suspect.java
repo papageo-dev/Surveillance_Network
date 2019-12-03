@@ -32,7 +32,10 @@ public class Suspect {
 	//Add a suspect's potential partner to the ArrayList: "potentialPartners"
 	public void addPotentialPartners(Suspect aSuspect) {
 		for (int i=0; i<potentialPartners.size(); i++) { //Check if ArrayList contains the current potential partner
-			if (potentialPartners.get(i).equals(aSuspect)) { //If contains, break
+			if (potentialPartners.get(i).equals(aSuspect)) { //If contains, print message and break
+				System.out.println("This suspect: " + aSuspect.name + " (" + aSuspect.codeName + ") "
+			                       + "is already a partner of suspect: " + potentialPartners.get(i).name
+			                       +  " (" + potentialPartners.get(i).codeName + ") ");
 				break;
 			}
 			else { //If not contains, add to ArrayList: "potentialPartners"
@@ -45,15 +48,7 @@ public class Suspect {
 	public boolean isConnectedTo(Suspect aSuspect) {
 		
 		boolean connected=false;
-		
-		//Check if suspects are connected
-		for (int i=0; i<phoneNumbers.size(); i++) {
-			for (int j=0; j<aSuspect.phoneNumbers.size(); j++) {
-				if (phoneNumbers.get(i).equals(aSuspect.phoneNumbers.get(j))) {
-					connected=true;
-				}
-			}	
-		}	
+	
 		return connected;
 	}
 	
@@ -63,11 +58,6 @@ public class Suspect {
 		//Create an ArrayList, that will contains all common partners, between aSuspect and current suspect
 		ArrayList<Suspect> commonPartners = new ArrayList<Suspect>();
 		
-		//Copy current suspect's list of partner to a list of common partners
-		commonPartners = potentialPartners;
-		
-		//Compare 2 lists and return only the common partners is local ArrayList
-		commonPartners.retainAll(aSuspect.potentialPartners);
 		
 		//Return list of common partners
 		return commonPartners; 
@@ -98,6 +88,11 @@ public class Suspect {
 	//Returns suspect's origin Country
 	public String getOriginCountry() {
 		return originCountry;
+	}
+	
+	//Return a list with supsect's phone numbers
+	public ArrayList<String> getPhoneNumbers(){
+		return phoneNumbers;
 	}
 	
 	@Override
