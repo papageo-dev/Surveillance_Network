@@ -13,6 +13,11 @@ public class Suspect {
 	
 	//Create an ArrayList object, that contains suspect's potential partners
 	private ArrayList<Suspect> potentialPartners;
+	
+	//Suspect's constructor, without arguments
+	public Suspect() {
+		
+	}
 
 	//Suspect's constructor, with arguments
 	public Suspect(String name, String codeName, String originCountry, String actionCity) {
@@ -31,26 +36,44 @@ public class Suspect {
 	
 	//Add a suspect's potential partner to the ArrayList: "potentialPartners"
 	public void addPotentialPartners(Suspect aSuspect) {
-		for (int i=0; i<potentialPartners.size(); i++) { //Check if ArrayList contains the current potential partner
-			if (potentialPartners.get(i).equals(aSuspect)) { //If contains, print message and break
-				System.out.println("This suspect: " + aSuspect.name + " (" + aSuspect.codeName + ") "
-			                       + "is already a partner of suspect: " + potentialPartners.get(i).name
-			                       +  " (" + potentialPartners.get(i).codeName + ") ");
-				break;
-			}
-			else { //If not contains, add to ArrayList: "potentialPartners"
-				potentialPartners.add(aSuspect);
-			}
+		
+		if (this.name.equals(aSuspect.name) && this.codeName.equals(aSuspect.codeName)) {
+			System.out.println("Warning! You can't enter the current suspect: " 
+					          + "'" + aSuspect.getName() + " (" + aSuspect.getCodeName() + ")" + "'"  
+					          + " in his/her own list with potential partners. \n");
+		}
+		//Check if aSuspect is already entered in current suspect's list with potential partners
+		else if (this.isConnectedTo(aSuspect)) { //If he already entered, print a warning message
+			System.out.println("Warning! This suspect: " + "'" + aSuspect.getName() + " (" + aSuspect.getCodeName() + ")" 
+					          + "'" + " is already entered in list with potential partners of suspect: "
+					          + "'" + this.getName() + " (" + this.getCodeName() + ")" + "' \n");
+		}
+		else{
+			//Add aSuspect in current suspect's list with potential partners
+			this.potentialPartners.add(aSuspect);
 		}
 	}
 	
-	//Returns true if current suspect and aSuspect are connected, else returns false
+	//Return true if current suspect and aSuspect are connected, else return false
 	public boolean isConnectedTo(Suspect aSuspect) {
 		
 		boolean connected=false;
 	
-		//...
-			
+		//Search for the aSuspect's name in current suspect's ArrayList with potential partners
+		for (Suspect s : potentialPartners) {
+			//if found a suspect with the same name and code name, connected=true and break
+			if (s.getName().contains(aSuspect.getName()) && s.getCodeName().contains(aSuspect.getCodeName())) {
+				connected=true;
+				if (connected) break;
+			}
+		}
+		
+		//For testing.. I Should delete it later
+		for (Suspect s : potentialPartners) {
+		System.out.println(s.name);
+		}
+		
+		
 		return connected;
 	}
 	
@@ -60,9 +83,18 @@ public class Suspect {
 		//Create an ArrayList, that will contains all common partners, between aSuspect and current suspect
 		ArrayList<Suspect> commonPartners = new ArrayList<Suspect>();
 		
-		//...
+		//Search in aSuspect's and current suspect's list with potential partners for common partners
+		for (Suspect s1 : potentialPartners) {
+			for (Suspect s2 : aSuspect.potentialPartners) {
+				//If found a partner with the same name and code name in both list, add to local ArrayList 'commonPartners'
+				if (s1.getName().equals(aSuspect.getName()) && s1.getCodeName().equals(aSuspect.getCodeName())) {
+					commonPartners.add(s2);
+					break;
+				}
+			}
+		}
 		
-		//Return list of common partners
+		//Return list with all common partners
 		return commonPartners; 
 	}
 	
@@ -73,22 +105,22 @@ public class Suspect {
 		}
 	}
 
-	//Returns current suspect's name
+	//Return current suspect's name
 	public String getName() {
 		return name;
 	}
 
-	//Returns current suspect's code name
+	//Return current suspect's code name
 	public String getCodeName() {
 		return codeName;
 	}
 	
-	//Returns number of suspect's potential partners
+	//Return number of suspect's potential partners
 	public int getPotentialPartnersSize(){
 		return potentialPartners.size();
 	}
 	
-	//Returns suspect's origin Country
+	//Return suspect's origin Country
 	public String getOriginCountry() {
 		return originCountry;
 	}
@@ -96,12 +128,6 @@ public class Suspect {
 	//Return a list with supsect's phone numbers
 	public ArrayList<String> getPhoneNumbers(){
 		return phoneNumbers;
-	}
-	
-	@Override
-	public boolean equals(Object o) {
-		Suspect s = (Suspect)o;
-		return (s.name==name);
 	}
 	
 

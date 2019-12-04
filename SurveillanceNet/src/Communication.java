@@ -8,6 +8,11 @@ public class Communication {
 	protected int month; //Communication's month
 	protected int year; //Communication's year
 	
+	//Communication's constructor, without arguments
+	public Communication() {
+		
+	}
+	
 	//Communication's constructor, with arguments
 	public Communication(String phoneNumber1, String phoneNumber2, int day, int month, int year) {
 		this.phoneNumber1 = phoneNumber1; //Initialize suspect's 1 phone number
