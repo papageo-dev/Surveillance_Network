@@ -21,8 +21,8 @@ public class Registry {
 		for (Suspect s1 : allSuspects) {
 			for (Suspect s2 : allSuspects) {
 				if (s1.getPhoneNumbers().contains(aCommunication.phoneNumber1) || s2.getPhoneNumbers().contains(aCommunication.phoneNumber2)) {
-					s1.addPotentialPartners(s2);
-					s2.addPotentialPartners(s1);
+					s1.addPotentialPartner(s2);
+					s2.addPotentialPartner(s1);
 					break;
 				}
 			}
@@ -37,7 +37,7 @@ public class Registry {
 		//Search ArrayList with all suspects
 		for (int i=0; i<getAllSuspects().size(); i++) {
 			//If find a suspect with more than mostPartnersSuspect's partners...
-			if (getAllSuspects().get(i).getPotentialPartnersSize()>mostPartnersSuspect.getPotentialPartnersSize()) {
+			if (getAllSuspects().get(i).getNumberOfPotentialPartners()>mostPartnersSuspect.getNumberOfPotentialPartners()) {
 				mostPartnersSuspect=getAllSuspects().get(i); //Make this suspect, the suspect with the most partners
 			}
 		}
@@ -98,7 +98,7 @@ public class Registry {
 		return allSuspects;
 	}
 	
-	//Return all suspects that they came from specific Country
+	//Return all suspects that they came from specific Country(country)
 	public void printSuspectsFromCountry(String country) {
 		
 		for (int i=0; i<getAllSuspects().size(); i++) {

@@ -77,6 +77,9 @@ public class Main {
 		//Test 6. print suspects originating from a country
 		System.out.print("\nTest6 – Suspects coming from Spain: \n");
 		registry.printSuspectsFromCountry("Spain");
+		
+		//Testing... I should delete it
+		s1.printPotentialPartners();
 	}
 
 }

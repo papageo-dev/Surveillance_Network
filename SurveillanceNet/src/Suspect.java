@@ -35,7 +35,7 @@ public class Suspect {
 	}
 	
 	//Add a suspect's potential partner to the ArrayList: "potentialPartners"
-	public void addPotentialPartners(Suspect aSuspect) {
+	public void addPotentialPartner(Suspect aSuspect) {
 		
 		if (this.name.equals(aSuspect.name) && this.codeName.equals(aSuspect.codeName)) {
 			System.out.println("Warning! You can't enter the current suspect: " 
@@ -73,17 +73,21 @@ public class Suspect {
 		System.out.println(s.name);
 		}
 		
+		for (Suspect s : aSuspect.potentialPartners) {
+			System.out.println(" -" + s.name);
+		}
+		
 		
 		return connected;
 	}
 	
-	//Returns a list that contains suspect's common potential partners
+	//Return a list that contains common potential partners of current suspect and aSuspect
 	public ArrayList<Suspect> getCommonPartners(Suspect aSuspect){
 		
 		//Create an ArrayList, that will contains all common partners, between aSuspect and current suspect
 		ArrayList<Suspect> commonPartners = new ArrayList<Suspect>();
 		
-		//Search in aSuspect's and current suspect's list with potential partners for common partners
+		//Search in current suspect's and aSuspect's list with potential partners for common partners
 		for (Suspect s1 : potentialPartners) {
 			for (Suspect s2 : aSuspect.potentialPartners) {
 				//If found a partner with the same name and code name in both list, add to local ArrayList 'commonPartners'
@@ -93,7 +97,6 @@ public class Suspect {
 				}
 			}
 		}
-		
 		//Return list with all common partners
 		return commonPartners; 
 	}
@@ -101,7 +104,12 @@ public class Suspect {
 	//Print suspect's potential partners info
 	public void printPotentialPartners() {
 		for (int i=0; i<potentialPartners.size(); i++) {
-			System.out.println(potentialPartners.get(i).name + potentialPartners.get(i).codeName);
+			//Print name and code name from all current suspect's potential partners
+			System.out.println(potentialPartners.get(i).name + " (" + potentialPartners.get(i).codeName + ") ");
+			//If current suspect and the potential partner coming from the same Country, print also a "*"
+			if (this.originCountry.equals(this.potentialPartners.get(i).getOriginCountry())) {
+				System.out.println("*");
+			}
 		}
 	}
 
@@ -116,7 +124,7 @@ public class Suspect {
 	}
 	
 	//Return number of suspect's potential partners
-	public int getPotentialPartnersSize(){
+	public int getNumberOfPotentialPartners(){
 		return potentialPartners.size();
 	}
 	
