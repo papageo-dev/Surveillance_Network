@@ -1,5 +1,5 @@
 
-public class Communication {
+public abstract class Communication {
 	
 	//Communication's fields
 	protected String phoneNumber1; //Suspect's 1 phone number
@@ -21,5 +21,8 @@ public class Communication {
 		this.month = month; //Initialize communication's month
 		this.year = year; //Initialize communication's year
 	}
+	
+	//Signature of method "printInfo()"
+	public abstract void printInfo();
 
 }

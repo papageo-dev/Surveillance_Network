@@ -37,7 +37,12 @@ public class Suspect {
 	//Add a suspect's potential partner to the ArrayList: "potentialPartners"
 	public void addPotentialPartner(Suspect aSuspect) {
 		
-		if (this.name.equals(aSuspect.name) && this.codeName.equals(aSuspect.codeName)) {
+		//Add aSuspect in current suspect's list with potential partners, if he/she isn't already entered
+		if (!this.isConnectedTo(aSuspect)) {
+			this.potentialPartners.add(aSuspect);
+		}
+		
+		/*if (this.name.equals(aSuspect.name) && this.codeName.equals(aSuspect.codeName)) {
 			System.out.println("Warning! You can't enter the current suspect: " 
 					          + "'" + aSuspect.getName() + " (" + aSuspect.getCodeName() + ")" + "'"  
 					          + " in his/her own list with potential partners. \n");
@@ -51,7 +56,7 @@ public class Suspect {
 		else{
 			//Add aSuspect in current suspect's list with potential partners
 			this.potentialPartners.add(aSuspect);
-		}
+		}*/
 	}
 	
 	//Return true if current suspect and aSuspect are connected, else return false
@@ -67,17 +72,6 @@ public class Suspect {
 				if (connected) break;
 			}
 		}
-		
-		//For testing.. I Should delete it later
-		for (Suspect s : potentialPartners) {
-		System.out.println(s.name);
-		}
-		
-		for (Suspect s : aSuspect.potentialPartners) {
-			System.out.println(" -" + s.name);
-		}
-		
-		
 		return connected;
 	}
 	
