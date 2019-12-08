@@ -23,4 +23,5 @@ public class SMS extends Communication {
 		return contentText;
 	}
 
+	
 }

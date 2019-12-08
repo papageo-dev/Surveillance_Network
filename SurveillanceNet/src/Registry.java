@@ -20,7 +20,9 @@ public class Registry {
 		//Check if communication is being between number1 and number2
 		for (Suspect s1 : allSuspects) {
 			for (Suspect s2 : allSuspects) {
+				//If there is communication between two suspects...
 				if (s1.getPhoneNumbers().contains(aCommunication.phoneNumber1) || s2.getPhoneNumbers().contains(aCommunication.phoneNumber2)) {
+					//Add suspects in both lists with all sucpect's potential partners
 					s1.addPotentialPartner(s2);
 					s2.addPotentialPartner(s1);
 					break;
@@ -93,11 +95,6 @@ public class Registry {
 		return suspiciousMessages; //Return the ArrayList with all suspicious messages
 	}
 	
-	//Return an ArrayList with all suspects
-	public ArrayList<Suspect> getAllSuspects() {
-		return allSuspects;
-	}
-	
 	//Return all suspects that they came from specific Country(country)
 	public void printSuspectsFromCountry(String country) {
 		
@@ -106,6 +103,11 @@ public class Registry {
 				System.out.println(getAllSuspects().get(i).getName() + " (" + getAllSuspects().get(i).getCodeName() + ") ");
 			}
 		}	
+	}
+	
+	//Return an ArrayList with all suspects
+	public ArrayList<Suspect> getAllSuspects() {
+		return allSuspects;
 	}
 	
 	

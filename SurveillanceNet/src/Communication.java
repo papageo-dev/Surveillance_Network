@@ -25,4 +25,5 @@ public abstract class Communication {
 	//Signature of method "printInfo()"
 	public abstract void printInfo();
 
+	
 }
