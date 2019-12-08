@@ -38,7 +38,7 @@ public class Suspect {
 	public void addPotentialPartner(Suspect aSuspect) {
 		
 		//Add aSuspect in current suspect's list with potential partners, if he/she isn't already entered
-		if (!this.isConnectedTo(aSuspect)) {
+		if (!this.name.equals(aSuspect.name) && !this.codeName.equals(aSuspect.codeName) && !this.isConnectedTo(aSuspect)) {
 			this.potentialPartners.add(aSuspect);
 		}
 		
@@ -98,11 +98,15 @@ public class Suspect {
 	//Print suspect's potential partners info
 	public void printPotentialPartners() {
 		for (int i=0; i<potentialPartners.size(); i++) {
-			//Print name and code name from all current suspect's potential partners
-			System.out.println(potentialPartners.get(i).name + " (" + potentialPartners.get(i).codeName + ") ");
-			//If current suspect and the potential partner coming from the same Country, print also a "*"
-			if (this.originCountry.equals(this.potentialPartners.get(i).getOriginCountry())) {
-				System.out.println("*");
+			/*If current suspect and the potential partner NOT coming from the same Country,
+			 * print potential partner's name and code name
+			 */
+			if (!this.originCountry.equals(this.potentialPartners.get(i).getOriginCountry())) {
+				System.out.println(potentialPartners.get(i).name + " (" + potentialPartners.get(i).codeName + ") ");
+			}
+			//If they are coming from the same Country, print potential partner's name, code name and a "*'
+			else if (this.originCountry.equals(this.potentialPartners.get(i).getOriginCountry())) {
+				System.out.println(potentialPartners.get(i).name + " (" + potentialPartners.get(i).codeName + ") " + "*");
 			}
 		}
 	}
