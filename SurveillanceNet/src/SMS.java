@@ -15,7 +15,7 @@ public class SMS extends Communication {
 		System.out.println("This SMS has the following info \n" + 
 				"Between " + phoneNumber1 + " --- " + phoneNumber2 + "\n" + 
 				"on " + year + "/" + month + "/" + day + "\n" + 
-				"Text: " + contentText);	
+				"Text: " + contentText + "\n");	
 	}
 	
 	//Return SMS's content Text

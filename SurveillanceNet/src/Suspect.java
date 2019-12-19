@@ -109,6 +109,7 @@ public class Suspect {
 				System.out.println(potentialPartners.get(i).name + " (" + potentialPartners.get(i).codeName + ") " + "*");
 			}
 		}
+		System.out.println();
 	}
 
 	//Return current suspect's name

@@ -74,9 +74,23 @@ public class Main {
 		for(Suspect suspect: commonSuspects)
 			System.out.println(suspect.getName() + ", " + suspect.getCodeName());
 		
-		//Test 6. print suspects originating from a country
+		//Test 6. print suspect's originating from a country
 		System.out.print("\nTest6 – Suspects coming from Spain: \n");
 		registry.printSuspectsFromCountry("Spain");
+		
+		//Test 7. print suspect's potential partners info
+		System.out.print("\nTest7 - Potential Partners info: \n");
+		System.out.println("Current Suspect: " + s1.getName() + " (" + s1.getCodeName() + ") ");
+		System.out.println("\tPotential Partners: ");
+		s1.printPotentialPartners();
+		
+		System.out.println("Current Suspect: " + s2.getName() + " (" + s2.getCodeName() + ") ");
+		System.out.println("\tPotential Partners: ");
+		s2.printPotentialPartners();
+		
+		System.out.println("Current Suspect: " + s3.getName() + " (" + s3.getCodeName() + ") ");
+		System.out.println("\tPotential Partners: ");
+		s3.printPotentialPartners();
 	}
 	
 }

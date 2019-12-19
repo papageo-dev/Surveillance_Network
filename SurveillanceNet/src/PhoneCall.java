@@ -15,7 +15,7 @@ public class PhoneCall extends Communication {
 		System.out.println("This phone call has the following info \n" + 
 				"Between " + phoneNumber1 + " --- "  + phoneNumber2 + "\n" + 
 				"on " + year + "/" + month + "/" + day + "\n" +
-				"Duration: " + callDuration);
+				"Duration: " + callDuration + "\n");
 	}
 	
 	//Return phone call duration
