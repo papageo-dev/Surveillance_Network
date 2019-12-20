@@ -22,6 +22,5 @@ public class SMS extends Communication {
 	public String getContentText() {
 		return contentText;
 	}
-
 	
 }

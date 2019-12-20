@@ -110,5 +110,4 @@ public class Registry {
 		return allSuspects;
 	}
 	
-	
 }

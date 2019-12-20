@@ -23,5 +23,4 @@ public class PhoneCall extends Communication {
 		return callDuration;
 	}
 
-	
 }

@@ -137,5 +137,4 @@ public class Suspect {
 		return phoneNumbers;
 	}
 	
-
 }
