@@ -91,6 +91,7 @@ public class Main {
 		System.out.println("Current Suspect: " + s3.getName() + " (" + s3.getCodeName() + ") ");
 		System.out.println("\tPotential Partners: ");
 		s3.printPotentialPartners();
+		
 	}
 	
 }
